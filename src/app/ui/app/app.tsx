@@ -5,12 +5,12 @@ import * as visitor from '@/entities/visitor';
 import { APP_NAME } from '@/shared/config';
 import { history } from '@/shared/router';
 
-import { Routes } from '../../routes';
 import { Header } from '../header';
 import { Logo } from '../logo';
+import { Root } from '../root';
 import { Navigation } from './navigation';
 
-import '../../main.css';
+import './app.css';
 
 export const App = () => {
   const isAuth = visitor.selectors.useIsAuthorized();
@@ -30,8 +30,7 @@ export const App = () => {
             <Navigation />
           </ul>
         </Header>
-
-        <Routes />
+        <Root />
       </QueryParamProvider>
     </Router>
   );
