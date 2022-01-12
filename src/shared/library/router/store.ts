@@ -1,8 +1,8 @@
 import { createEvent, restore } from 'effector';
 import type { Location } from 'history';
-import history from 'history/browser';
+import { createHashHistory } from 'history';
 
-export { history };
+export const history = createHashHistory();
 
 // For example, synchronize history with Effector store through uni-directional flow (i.e. history -> store -> component
 
