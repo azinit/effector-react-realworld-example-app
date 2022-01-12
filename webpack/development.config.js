@@ -13,8 +13,8 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
   devServer: {
     port: 4100,
-    open: false,
     historyApiFallback: true,
+    open: '/effector-react-realworld-example-app',
   },
   plugins: [
     new MiniCssExtractPlugin({

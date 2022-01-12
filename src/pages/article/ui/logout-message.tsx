@@ -3,7 +3,7 @@ import * as visitor from '@/entities/visitor';
 import { ROUTES } from '@/shared/router';
 
 export const LogoutMessage = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? null : (
     <p>

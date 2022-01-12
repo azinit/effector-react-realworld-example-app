@@ -3,7 +3,7 @@ import { APP_NAME } from '@/shared/config';
 import { Banner, Container } from '@/shared/ui';
 
 export const LogoutBanner = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? null : (
     <Banner>

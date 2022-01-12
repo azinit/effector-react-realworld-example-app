@@ -10,7 +10,7 @@ type Props = Readonly<{
 
 export const ButtonDelete = ({ author, onClick }: Props) => {
   const { username } = visitor.selectors.useVisitor();
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
   const isSelf = username === author.username;
 
   if (isAuth && isSelf) {

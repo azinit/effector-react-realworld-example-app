@@ -1,35 +1,29 @@
-import { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import NoMatchPage from '@/pages/no-match';
+import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+// import * as visitor from '@/entities/visitor';
 import { ROUTES, PrivateRoute } from '@/shared/router';
-import { Spinner } from '@/shared/ui';
-import { Default } from './pages/default';
 
 const GlobalFeedPage = lazy(() => import('./pages/global-feed'));
 const YourFeedPage = lazy(() => import('./pages/global-feed'));
 const FeedByTagPage = lazy(() => import('./pages/feed-by-tag'));
 
-export const Routes = () => {
+export const RoutesWrapper = () => {
+  // const isAuth = visitor.selectors.useAuth();
+
   return (
-    <Suspense fallback={<Spinner />}>
-      <Switch>
-        <Route exact path={ROUTES.root}>
-          <Default />
-        </Route>
-        <Route path={ROUTES.globalFeed}>
-          <GlobalFeedPage />
-        </Route>
-        <PrivateRoute path={ROUTES.yourFeed}>
-          <YourFeedPage />
-        </PrivateRoute>
-        <Route path={ROUTES.feedByTag}>
-          <FeedByTagPage />
-        </Route>
-        <Route path="*">
-          <NoMatchPage />
-        </Route>
-      </Switch>
-    </Suspense>
+    <Routes>
+      {/* <Route element={<Default />} path={ROUTES.root} /> */}
+      <Route element={<GlobalFeedPage />} path={ROUTES.globalFeed} />
+      <Route
+        element={
+          <PrivateRoute>
+            <YourFeedPage />
+          </PrivateRoute>
+        }
+        path={ROUTES.yourFeed}
+      />
+
+      <Route element={<FeedByTagPage />} path={ROUTES.feedByTag} />
+    </Routes>
   );
 };

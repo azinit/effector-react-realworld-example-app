@@ -1,14 +1,14 @@
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
 import { ROUTES } from '@/shared/router';
 import { Page, Row } from '@/shared/ui';
 import { LoginForm, Error } from './ui';
 
 const LoginPage = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? (
-    <Redirect to={ROUTES.root} />
+    <Navigate replace to={ROUTES.yourFeed} />
   ) : (
     <Page>
       <Row>

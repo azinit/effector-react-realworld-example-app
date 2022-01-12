@@ -2,6 +2,7 @@ const PROFILE = '/@:username';
 const EDITOR = '/editor';
 
 export const ROUTES = {
+  basename: '/effector-react-realworld-example-app',
   root: '/',
   login: '/login',
   registration: '/registration',

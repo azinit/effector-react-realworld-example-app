@@ -8,20 +8,20 @@ export const LoginLinks = () => {
   return (
     <>
       <NavItem>
-        <NavLink exact className="nav-link" to={ROUTES.root}>
+        <NavLink className="nav-link" to={ROUTES.root}>
           Home
         </NavLink>
       </NavItem>
 
       <NavItem>
-        <NavLink exact className="nav-link" to={ROUTES.editor.root}>
+        <NavLink className="nav-link" to={ROUTES.editor.root}>
           <i className="ion-compose" />
           &nbsp;New Post
         </NavLink>
       </NavItem>
 
       <NavItem>
-        <NavLink exact className="nav-link" to={ROUTES.settings}>
+        <NavLink className="nav-link" to={ROUTES.settings}>
           <i className="ion-gear-a" />
           &nbsp;Settings
         </NavLink>

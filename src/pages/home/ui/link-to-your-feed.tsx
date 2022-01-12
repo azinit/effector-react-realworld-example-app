@@ -4,7 +4,7 @@ import { ROUTES } from '@/shared/router';
 import { NavItem } from '@/shared/ui';
 
 export const LinkToYourFeed = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? (
     <NavItem>

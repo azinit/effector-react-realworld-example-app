@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 import * as visitor from '@/entities/visitor';
 import { APP_NAME } from '@/shared/config';
+import { ROUTES, RouteAdapter } from '@/shared/router';
 
-import { Routes } from '../../routes';
+import { RoutesWithErrorBoundary } from '../../routes';
 import { Header } from '../header';
 import { Logo } from '../logo';
 import { Navigation } from '../navigation';
@@ -12,7 +13,7 @@ import { Navigation } from '../navigation';
 import './app.css';
 
 export const App = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   useEffect(() => {
     if (isAuth) {
@@ -21,8 +22,8 @@ export const App = () => {
   }, [isAuth]);
 
   return (
-    <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
+    <BrowserRouter basename={ROUTES.basename}>
+      <QueryParamProvider ReactRouterRoute={RouteAdapter}>
         <Header>
           <Logo title={APP_NAME} />
           <ul className="nav navbar-nav pull-xs-right">
@@ -30,8 +31,8 @@ export const App = () => {
           </ul>
         </Header>
 
-        <Routes />
+        <RoutesWithErrorBoundary />
       </QueryParamProvider>
-    </Router>
+    </BrowserRouter>
   );
 };

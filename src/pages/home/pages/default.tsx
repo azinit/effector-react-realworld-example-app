@@ -1,13 +1,13 @@
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
 import { ROUTES } from '@/shared/router';
 
 export const Default = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? (
-    <Redirect to={ROUTES.yourFeed} />
+    <Navigate to={ROUTES.yourFeed} />
   ) : (
-    <Redirect to={ROUTES.globalFeed} />
+    <Navigate to={ROUTES.globalFeed} />
   );
 };

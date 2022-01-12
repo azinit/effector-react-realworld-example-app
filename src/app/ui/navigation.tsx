@@ -3,7 +3,7 @@ import { LoginLinks } from './login-links';
 import { LogoutLinks } from './logout-links';
 
 export const Navigation = () => {
-  const isAuth = visitor.selectors.useIsAuthorized();
+  const isAuth = visitor.selectors.useAuth();
 
   return isAuth ? <LoginLinks /> : <LogoutLinks />;
 };

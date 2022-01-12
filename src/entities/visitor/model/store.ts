@@ -50,7 +50,7 @@ persist({
 });
 
 export const selectors = {
-  useIsAuthorized: () => useStore($isAuthorized),
+  useAuth: () => useStore($isAuthorized),
   useUserName: () => useStore($username),
   useImage: () => useStore($image),
   useVisitor: () => useStore($visitor),
