@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useQueryParam, withDefault, NumberParam } from 'use-query-params';
+import { useEffect, useMemo } from 'react';
 import * as article from '@/entities/article';
+import { useSearchParams } from '@/shared/library/router';
 import { Pagination } from '@/shared/ui';
 import * as model from './model';
 
@@ -9,35 +9,59 @@ type Props = Readonly<{
 }>;
 
 const GlobalFeedPage = ({ pageSize = 10 }: Props) => {
-  const [page, setPage] = useQueryParam('page', withDefault(NumberParam, 1));
-  const loading = model.selectors.useGetFeedPending();
-  const isEmpty = model.selectors.useIsEmptyFeed();
-  const totalPages = model.selectors.useTotalPages();
-
-  useEffect(() => {
-    model.getFeedFx({ pageSize, page });
-  }, [page, pageSize]);
-
-  const handlePageChange = (x: number) => {
-    setPage(x);
-  };
+  const feed = useFeed(pageSize);
 
   return (
     <>
       <article.Feed
         articlesStore={model.$articles}
-        isEmpty={isEmpty}
-        loading={loading}
+        isEmpty={feed.isEmpty}
+        loading={feed.loading}
         onFavoriteToggle={model.favoriteArticleToggled}
       />
       <Pagination
-        current={page}
-        pageSize={pageSize}
-        total={totalPages}
-        onPageChange={handlePageChange}
+        current={feed.page}
+        pageSize={feed.pageSize}
+        total={feed.totalPages}
+        onPageChange={feed.handlePageChange}
       />
     </>
   );
 };
 
 export default GlobalFeedPage;
+
+function useFeed(pageSize: number) {
+  const loading = model.selectors.useGetFeedPending();
+  const isEmpty = model.selectors.useIsEmptyFeed();
+  const totalPages = model.selectors.useTotalPages();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageQuery = useMemo(() => {
+    const result = searchParams.get('page') ?? '1';
+
+    return Number(result);
+  }, [searchParams]);
+
+  useEffect(() => {
+    model.getFeedFx({
+      pageSize,
+      page: pageQuery,
+    });
+  }, [pageQuery, pageSize]);
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({
+      page: String(page),
+    });
+  };
+
+  return {
+    isEmpty,
+    loading,
+    page: pageQuery,
+    pageSize,
+    totalPages,
+    handlePageChange,
+  };
+}

@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { ROUTES } from '@/shared/router';
+import { Link, ROUTES } from '@/shared/library/router';
 import { Button } from '@/shared/ui';
 import * as model from '../model';
 

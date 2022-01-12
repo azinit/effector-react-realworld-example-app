@@ -4,12 +4,12 @@ import { limit } from '@/shared/library/limit';
 
 export type GetFeedPayload = Readonly<{
   tag: string;
-  page: number;
+  page: number | string;
   pageSize: number;
 }>;
 
 export const getFeed = ({ page, tag, pageSize }: GetFeedPayload) => {
-  const pageIndex = page - 1;
+  const pageIndex = Number(page) - 1;
 
   return http.request<article.types.FeedType>({
     url: `articles?tag=${encodeURIComponent(tag)}&${limit(

@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Comments } from '@/entities/comment';
+import { useParams } from '@/shared/library/router';
 import { Row, Page, Spinner } from '@/shared/ui';
 import * as model from './model';
 import { Content } from './ui/content';
@@ -28,8 +28,8 @@ const ArticlePage = () => {
         <div className="article-actions" />
         <Row>
           <div className="col-xs-12 col-md-8 offset-md-2">
-            <Comments />
             <LogoutMessage />
+            <Comments />
           </div>
         </Row>
       </Page>

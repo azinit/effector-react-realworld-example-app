@@ -1,8 +1,9 @@
-import { createEffect } from 'effector';
+import { createEvent, createEffect } from 'effector';
 import { useStore } from 'effector-react';
 import * as article from '@/entities/article';
 import * as api from './api';
 
+export const setTagClicked = createEvent<string>();
 export const getFeedFx = createEffect(api.getFeed);
 
 export const {

@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
-import { ROUTES } from '@/shared/router';
+import { Link, ROUTES } from '@/shared/library/router';
 
 export const LogoutMessage = () => {
   const isAuth = visitor.selectors.useAuth();

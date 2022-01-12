@@ -1,6 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
-import { ROUTES } from '@/shared/router';
+import { NavLink } from '@/shared/library/router';
 import { NavItem } from '@/shared/ui';
 
 export const LinkToYourFeed = () => {
@@ -8,7 +7,7 @@ export const LinkToYourFeed = () => {
 
   return isAuth ? (
     <NavItem>
-      <NavLink exact className="nav-link" to={ROUTES.yourFeed}>
+      <NavLink className="nav-link" to="/">
         Your Feed
       </NavLink>
     </NavItem>

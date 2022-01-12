@@ -1,7 +1,5 @@
 import { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
-// import * as visitor from '@/entities/visitor';
-import { ROUTES, PrivateRoute } from '@/shared/router';
+import { Routes, Route, ROUTES, PrivateRoute } from '@/shared/library/router';
 
 const GlobalFeedPage = lazy(() => import('./pages/global-feed'));
 const YourFeedPage = lazy(() => import('./pages/global-feed'));

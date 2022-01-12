@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from '@/shared/library/router';
 import { NavItem } from '@/shared/ui';
 
 type Props = Readonly<{
@@ -10,12 +10,12 @@ export const Tabs = ({ children }: Props) => {
     <div className="col-xs-12 col-md-10 offset-md-1">
       <ul className="nav nav-pills outline-active articles-toggle">
         <NavItem>
-          <NavLink className="nav-link" to={`${url}`}>
+          <NavLink caseSensitive end className="nav-link" to="">
             My Articles
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="nav-link" to={`${url}/favorites`}>
+          <NavLink caseSensitive className="nav-link" to="favorites">
             Favorited Articles
           </NavLink>
         </NavItem>

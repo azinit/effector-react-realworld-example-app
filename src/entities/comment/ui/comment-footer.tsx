@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link } from '@/shared/library/router';
 import * as model from '../model';
 import { ButtonDelete } from './button-delete';
 

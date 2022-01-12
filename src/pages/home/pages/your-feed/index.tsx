@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useQueryParam, withDefault, NumberParam } from 'use-query-params';
+import { useEffect, useMemo } from 'react';
 import * as article from '@/entities/article';
+import { useSearchParams } from '@/shared/library/router';
 import { Pagination } from '@/shared/ui';
 import * as model from './model';
 
@@ -30,21 +30,32 @@ const YourFeedPage = ({ pageSize = 10 }: Props) => {
 };
 
 function useFeed(pageSize: number) {
-  const [page, setPage] = useQueryParam('page', withDefault(NumberParam, 1));
   const loading = model.selectors.useGetFeedPending();
   const isEmpty = model.selectors.useIsEmptyFeed();
   const totalPages = model.selectors.useTotalPages();
 
-  useEffect(() => {
-    model.getFeedFx({ pageSize, page });
-  }, [page, pageSize]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageQuery = useMemo(() => {
+    const result = searchParams.get('page') ?? '1';
 
-  const handlePageChange = (x: number) => {
-    setPage(x);
+    return Number(result);
+  }, [searchParams]);
+
+  useEffect(() => {
+    model.getFeedFx({
+      pageSize,
+      page: pageQuery,
+    });
+  }, [pageQuery, pageSize]);
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({
+      page: String(page),
+    });
   };
 
   return {
-    page,
+    page: pageQuery,
     loading,
     isEmpty,
     totalPages,

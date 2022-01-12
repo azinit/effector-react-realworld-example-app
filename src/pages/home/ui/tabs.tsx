@@ -1,16 +1,17 @@
-import { NavLink } from 'react-router-dom';
-import { ROUTES, useQuery } from '@/shared/router';
+import { useMemo } from 'react';
+import { NavLink, useSearchParams, ROUTES } from '@/shared/library/router';
 import { NavItem } from '@/shared/ui';
 import { LinkToYourFeed } from './link-to-your-feed';
 
 export const Tabs = () => {
-  const tag = useQuery().get('tag');
+  const [params] = useSearchParams();
+  const tag = useMemo(() => params.get('tag'), [params]);
 
   return (
     <ul className="feed-toggle nav nav-pills outline-active">
       <LinkToYourFeed />
       <NavItem>
-        <NavLink className="nav-link" to={ROUTES.globalFeed}>
+        <NavLink className="nav-link" to="">
           Global Feed
         </NavLink>
       </NavItem>

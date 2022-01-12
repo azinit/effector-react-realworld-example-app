@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useQueryParam, withDefault, NumberParam } from 'use-query-params';
+import { useEffect, useMemo } from 'react';
 import * as article from '@/entities/article';
+import { useSearchParams } from '@/shared/library/router';
 import { Pagination } from '@/shared/ui';
 import * as profile from '../../model';
 import * as model from './model';
@@ -31,34 +31,50 @@ const FavoritedArticlesPage = ({ pageSize = 5 }: Props) => {
 };
 
 function useFeed(pageSize: number) {
-  const [page, setPage] = useQueryParam('page', withDefault(NumberParam, 1));
   const username = profile.selectors.useUserName();
   const loading = model.selectors.useGetFeedPending();
   const isEmpty = model.selectors.useIsEmptyFeed();
   const totalPages = model.selectors.useTotalPages();
 
-  useEffect(() => {
-    model.getFeedFx({ username, page, pageSize });
-  }, [username, page, pageSize]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageQuery = useMemo(() => {
+    const result = searchParams.get('page') ?? '1';
 
-  const handlePageChange = (x: number) => {
-    setPage(x);
+    return Number(result);
+  }, [searchParams]);
+
+  useEffect(() => {
+    model.getFeedFx({
+      username,
+      page: pageQuery,
+      pageSize,
+    });
+  }, [username, pageQuery, pageSize]);
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({
+      page: String(page),
+    });
   };
 
   const handleFavoriteToggle = (payload: article.types.SelectedArticle) => {
     model.favoriteArticleToggled(payload);
     model.setUnfavoriteArticleFx.done.watch(() => {
-      model.getFeedFx({ username, page, pageSize });
+      model.getFeedFx({
+        username,
+        page: pageQuery,
+        pageSize,
+      });
     });
   };
 
   return {
-    page,
-    loading,
+    page: pageQuery,
     isEmpty,
+    loading,
     totalPages,
-    handlePageChange,
     handleFavoriteToggle,
+    handlePageChange,
   };
 }
 

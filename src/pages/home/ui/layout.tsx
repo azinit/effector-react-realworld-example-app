@@ -1,10 +1,9 @@
-import { Outlet } from '@/shared/library/router';
 import { Page, Row } from '@/shared/ui';
-import { LogoutBanner } from './ui/logout-banner';
-import { Sidebar } from './ui/sidebar';
-import { Tabs } from './ui/tabs';
+import { LogoutBanner } from './logout-banner';
+import { Sidebar } from './sidebar';
+import { Tabs } from './tabs';
 
-const HomePage = () => {
+export const Layout = () => {
   return (
     <div className="home-page">
       <LogoutBanner />
@@ -12,7 +11,6 @@ const HomePage = () => {
         <Row>
           <main className="col-md-9">
             <Tabs />
-            <Outlet />
           </main>
           <div className="col-md-3">
             <Sidebar />
@@ -22,5 +20,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;
