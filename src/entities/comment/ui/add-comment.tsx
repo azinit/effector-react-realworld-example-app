@@ -50,7 +50,9 @@ function useForm() {
   return {
     register,
     handleSubmit: handleSubmit(({ body }: FormInputs) => {
-      model.addCommentFx({ body, slug });
+      if (slug) {
+        model.addCommentFx({ body, slug });
+      }
     }),
   };
 }

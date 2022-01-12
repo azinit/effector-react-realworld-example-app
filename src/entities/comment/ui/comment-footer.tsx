@@ -11,7 +11,9 @@ export const Footer = ({ author, createdAt, id }: CommentFooterProps) => {
   const { slug } = useParams<{ slug: string }>();
 
   const handleDeleteComment = () => {
-    model.commentDeleted({ slug, id });
+    if (slug) {
+      model.commentDeleted({ slug, id });
+    }
   };
 
   return (
