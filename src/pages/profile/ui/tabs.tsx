@@ -1,4 +1,4 @@
-import { NavLink } from '@/shared/library/router';
+import { NavLink } from 'react-router-dom';
 import { NavItem } from '@/shared/ui';
 
 type Props = Readonly<{

@@ -1,11 +1,7 @@
 import { lazy, Suspense } from 'react';
 // import * as visitor from '@/entities/visitor';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  PrivateRoute,
-} from '@/shared/library/router';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { PrivateRoute } from '@/shared/library/router';
 import { Spinner } from '@/shared/ui';
 import { Layout } from '../layout';
 

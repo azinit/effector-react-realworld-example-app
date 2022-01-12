@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Comments } from '@/entities/comment';
-import { useParams } from '@/shared/library/router';
 import { Row, Page, Spinner } from '@/shared/ui';
 import * as model from './model';
 import { Content } from './ui/content';

@@ -1,4 +1,4 @@
-import { Outlet } from '@/shared/library/router';
+import { Outlet } from 'react-router-dom';
 import { Page, Row } from '@/shared/ui';
 import { LogoutBanner } from './ui/logout-banner';
 import { Sidebar } from './ui/sidebar';

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Link } from '@/shared/library/router';
+import { Link } from 'react-router-dom';
 import { TagsWrapper, Tag } from '@/shared/ui';
 
 import { types } from '../model';

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { NavLink, useSearchParams, ROUTES } from '@/shared/library/router';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import { ROUTES } from '@/shared/library/router';
 import { NavItem } from '@/shared/ui';
 import { LinkToYourFeed } from './link-to-your-feed';
 

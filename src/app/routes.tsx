@@ -1,7 +1,8 @@
 import { lazy, Suspense, useState, useCallback } from 'react';
 import type { FallbackProps } from 'react-error-boundary';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Routes, Route, ROUTES } from '@/shared/library/router';
+import { Routes, Route } from 'react-router-dom';
+import { ROUTES } from '@/shared/library/router';
 import { Spinner, Page, Button } from '@/shared/ui';
 
 const LoginPage = lazy(() => import('@/pages/login'));

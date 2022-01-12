@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useList } from 'effector-react';
-import { Link, ROUTES } from '@/shared/library/router';
+import { ROUTES } from '@/shared/library/router';
 import { Spinner } from '@/shared/ui';
 import * as home from '../model';
 

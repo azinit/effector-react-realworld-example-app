@@ -1,5 +1,6 @@
+import { Link, Navigate } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
-import { Link, Navigate, ROUTES } from '@/shared/library/router';
+import { ROUTES } from '@/shared/library/router';
 import { Page, Row } from '@/shared/ui';
 import { RegistrationForm, Error } from './ui';
 

@@ -1,5 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import { Avatar } from '@/entities/visitor';
-import { NavLink, ROUTES } from '@/shared/library/router';
+import { ROUTES } from '@/shared/library/router';
 import { NavItem } from '@/shared/ui';
 import { LinkToVisitor } from './link-to-visitor';
 

@@ -1,5 +1,6 @@
+import { Navigate } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
-import { Navigate, ROUTES } from '@/shared/library/router';
+import { ROUTES } from '@/shared/library/router';
 
 export const Default = () => {
   const isAuth = visitor.selectors.useAuth();

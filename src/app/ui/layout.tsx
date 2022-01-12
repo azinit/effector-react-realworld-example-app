@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import * as visitor from '@/entities/visitor';
 import { APP_NAME } from '@/shared/config';
-import { Outlet } from '@/shared/library/router';
 import { Header } from './header';
 import { Logo } from './logo';
 import { Navigation } from './navigation';

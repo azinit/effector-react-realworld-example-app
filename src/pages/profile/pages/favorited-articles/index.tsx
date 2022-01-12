@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import * as article from '@/entities/article';
-import { useSearchParams } from '@/shared/library/router';
 import { Pagination } from '@/shared/ui';
 import * as profile from '../../model';
 import * as model from './model';
